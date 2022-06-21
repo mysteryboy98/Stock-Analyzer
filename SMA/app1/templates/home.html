@@ -4,8 +4,166 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'SigninSignout' %}">Let's go to the Main Page</a></p>
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>SMA</title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://unicons.iconscout.com/release/v3.0.6/css/line.css'><link rel="stylesheet" href="{% static '/CSS/home.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head> 
+<body>
+<section id="wrapper">
+  <nav class="navbar navbar-expand-md">
+    <div class="container-fluid mx-2">
+      <div class="navbar-header">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="uil-bars text-white"></i>
+        </button>
+        <a class="navbar-brand" href="#"><h2>Stock Market Analyzer</h2><span</span></a>
+      </div>
+      <div class="collapse navbar-collapse" id="toggle-navbar">
+        <ul class="navbar-nav ms-auto">   
+          <a href="{% url 'logout' %}"> <li>Logout</li></a>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="uil-bell"></i><span>0</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="p-4">
+    <div class="welcome">
+      <div class="content rounded-3 p-3">
+        <h1 class="fs-3">Welcome to Dashboard</h1>
+        <p class="mb-0">Hello, Predictions are ready for you!!</p>
+      </div>
+    </div>
+    <section class="statistics mt-4">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
+            <i class="uil-envelope-shield fs-2 text-center bg-primary rounded-circle"></i>
+            <div class="ms-3">
+              <div class="d-flex align-items-center">
+                <h3 class="mb-0">300+</h3> <span class="d-block ms-2">Shares</span>
+              </div>
+              <p class="fs-normal mb-0">Total Companies shares on our Website!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
+            <i class="uil-file fs-2 text-center bg-danger rounded-circle"></i>
+            <div class="ms-3">
+              <div class="d-flex align-items-center">
+                <h3 class="mb-0">30+</h3> <span class="d-block ms-2">Total Tables</span>
+              </div>
+              <p class="fs-normal mb-0">Total Number of Tables available!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="box d-flex rounded-2 align-items-center p-3">
+            <i class="uil-users-alt fs-2 text-center bg-success rounded-circle"></i>
+            <div class="ms-3">
+              <div class="d-flex align-items-center">
+                <h3 class="mb-0">100+</h3> <span class="d-block ms-2">Total Companies</span>
+              </div>
+              <p class="fs-normal mb-0">More than 100 Companies!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="charts mt-4">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="chart-container rounded-2 p-3">
+            <h3 class="fs-6 mb-3">Share Changes in BOP</h3>
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="chart-container rounded-2 p-3">
+            <h3 class="fs-6 mb-3">Share Changes in PSO</h3>
+            <canvas id="myChart2"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="admins mt-4">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box">
+            
+            <!-- <h4>Admins:</h4> -->
+            <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+              <i class="material-icons">looks_one</i>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">SNGPL</h3>
+                <p class="mb-0">Sui Norther Gas Piplines Limited.</p>
+              </div>
+            </div>
+            <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+              <i class="material-icons">looks_two</i>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">Honda</h3>
+                <p class="mb-0">Honda Atlas Cars(Pak) Ltd.</p>
+              </div>
+            </div>
+            <div class="admin d-flex align-items-center rounded-2 p-3">
+              <i class="material-icons">looks_3</i>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">CNL</h3>
+                <p class="mb-0">Ghandara Nissan Ltd.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box">
+            
+            <!-- <h4>Moderators:</h4> -->
+            <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+              <i class="material-icons">looks_4</i>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">PEL</h3>
+                <p class="mb-0">Pakistan Electron Ltd.</p>
+              </div>
+            </div>
+            <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+              <i class="material-icons">looks_5</i>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">CCC</h3>
+                <p class="mb-0">Cherat Cement Co.</p>
+              </div>
+            </div>
+            <div class="admin d-flex align-items-center rounded-2 p-3">
+              <i class="material-icons">looks_6</i>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">POF</h3>
+                <p class="mb-0">Pakistan Ordinance Factory.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+</section>
+
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.jshttps://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script><script  src="{% static '/JS/home.js' %}"></script>
+</body>
+</html> 
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
